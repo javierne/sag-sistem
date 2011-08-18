@@ -69,7 +69,7 @@ public class Menu extends javax.swing.JFrame {
 		initGUI(sistema);
 	}
 	
-	private void initGUI(Sistema sistema) {
+	private void initGUI(final Sistema sistema) {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			this.setTitle("S.A.G");
@@ -93,7 +93,7 @@ public class Menu extends javax.swing.JFrame {
 									getContentPane().remove(jPanel1);
 									getContentPane().repaint();
 									jPanel1=null;
-									jPanel1= new NuevoRodeoView();
+									jPanel1= new NuevoRodeoView(sistema);
 									getContentPane().add(jPanel1);
 									jPanel1.repaint();
 									jPanel1.updateUI();
@@ -110,7 +110,7 @@ public class Menu extends javax.swing.JFrame {
 									getContentPane().remove(jPanel1);
 									getContentPane().repaint();
 									jPanel1=null;
-									jPanel1= new ActualizarRodeoViw();
+									jPanel1= new ActualizarRodeoViw(sistema);
 									getContentPane().add(jPanel1);
 									jPanel1.repaint();
 									jPanel1.updateUI();
@@ -127,7 +127,7 @@ public class Menu extends javax.swing.JFrame {
 									getContentPane().remove(jPanel1);
 									getContentPane().repaint();
 									jPanel1=null;
-									jPanel1= new EliminarRodeoView();
+									jPanel1= new EliminarRodeoView(sistema);
 									getContentPane().add(jPanel1);
 									jPanel1.repaint();
 									jPanel1.updateUI();
@@ -150,7 +150,7 @@ public class Menu extends javax.swing.JFrame {
 									getContentPane().remove(jPanel1);
 									getContentPane().repaint();
 									jPanel1=null;
-									jPanel1= new NuevaCategoriaView();
+									jPanel1= new NuevaCategoriaView(sistema);
 									getContentPane().add(jPanel1);
 									jPanel1.repaint();
 									jPanel1.updateUI();
@@ -169,7 +169,7 @@ public class Menu extends javax.swing.JFrame {
 										getContentPane().remove(jPanel1);
 										getContentPane().repaint();
 										jPanel1=null;
-										jPanel1= new ModificarCategoriaView();
+										jPanel1= new ModificarCategoriaView(sistema);
 										getContentPane().add(jPanel1);
 										jPanel1.repaint();
 										jPanel1.updateUI();
@@ -193,7 +193,7 @@ public class Menu extends javax.swing.JFrame {
 										getContentPane().remove(jPanel1);
 										getContentPane().repaint();
 										jPanel1=null;
-										jPanel1= new NuevoMovimientoDeRodeoView();
+										jPanel1= new NuevoMovimientoDeRodeoView(sistema);
 										getContentPane().add(jPanel1);
 										jPanel1.repaint();
 										jPanel1.updateUI();
@@ -212,7 +212,7 @@ public class Menu extends javax.swing.JFrame {
 								getContentPane().remove(jPanel1);
 								getContentPane().repaint();
 								jPanel1=null;
-								jPanel1= new ModificarMovimientoRodeoView();
+								jPanel1= new ModificarMovimientoRodeoView(sistema);
 								getContentPane().add(jPanel1);
 								jPanel1.repaint();
 								jPanel1.updateUI();
@@ -236,7 +236,7 @@ public class Menu extends javax.swing.JFrame {
 								getContentPane().remove(jPanel1);
 								getContentPane().repaint();
 								jPanel1=null;
-								jPanel1= new PrediccionVolumenVentaView();
+								jPanel1= new PrediccionVolumenVentaView(sistema);
 								getContentPane().add(jPanel1);
 								jPanel1.repaint();
 								jPanel1.updateUI();
@@ -254,7 +254,7 @@ public class Menu extends javax.swing.JFrame {
 								getContentPane().remove(jPanel1);
 								getContentPane().repaint();
 								jPanel1=null;
-								jPanel1= new PrediccionNacimientosView();
+								jPanel1= new PrediccionNacimientosView(sistema);
 								getContentPane().add(jPanel1);
 								jPanel1.repaint();
 								jPanel1.updateUI();
@@ -271,7 +271,7 @@ public class Menu extends javax.swing.JFrame {
 								getContentPane().remove(jPanel1);
 								getContentPane().repaint();
 								jPanel1=null;
-								jPanel1= new PrediccionPreñezView();
+								jPanel1= new PrediccionPreñezView(sistema);
 								getContentPane().add(jPanel1);
 								jPanel1.repaint();
 								jPanel1.updateUI();
@@ -288,7 +288,7 @@ public class Menu extends javax.swing.JFrame {
 								getContentPane().remove(jPanel1);
 								getContentPane().repaint();
 								jPanel1=null;
-								jPanel1= new PrediccionPesoView();
+								jPanel1= new PrediccionPesoView(sistema);
 								getContentPane().add(jPanel1);
 								jPanel1.repaint();
 								jPanel1.updateUI();
@@ -306,7 +306,7 @@ public class Menu extends javax.swing.JFrame {
 								getContentPane().remove(jPanel1);
 								getContentPane().repaint();
 								jPanel1=null;
-								jPanel1= new PrediccionMuerteView();
+								jPanel1= new PrediccionMuerteView(sistema);
 								getContentPane().add(jPanel1);
 								jPanel1.repaint();
 								jPanel1.updateUI();
@@ -324,7 +324,7 @@ public class Menu extends javax.swing.JFrame {
 							getContentPane().remove(jPanel1);
 							getContentPane().repaint();
 							jPanel1=null;
-							jPanel1= new CalcularGananciaDiariaView();
+							jPanel1= new CalcularGananciaDiariaView(sistema);
 							getContentPane().add(jPanel1);
 							jPanel1.repaint();
 							jPanel1.updateUI();
@@ -341,7 +341,7 @@ public class Menu extends javax.swing.JFrame {
 							getContentPane().remove(jPanel1);
 							getContentPane().repaint();
 							jPanel1=null;
-							jPanel1= new RelacionPreniezNacimientoView();
+							jPanel1= new RelacionPreniezNacimientoView(sistema);
 							getContentPane().add(jPanel1);
 							jPanel1.repaint();
 							jPanel1.updateUI();

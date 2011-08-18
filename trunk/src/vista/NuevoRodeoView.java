@@ -5,6 +5,9 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.swing.JButton;
 
 import javax.swing.WindowConstants;
@@ -12,6 +15,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import controlador.Sistema;
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -48,18 +53,19 @@ public class NuevoRodeoView extends javax.swing.JPanel {
 	*/
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
-		frame.getContentPane().add(new NuevoRodeoView());
+		Sistema sistema=Sistema.getInstancia();
+		frame.getContentPane().add(new NuevoRodeoView(sistema));
 		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);
 	}
 	
-	public NuevoRodeoView() {
+	public NuevoRodeoView(Sistema sistema) {
 		super();
-		initGUI();
+		initGUI(sistema);
 	}
 	
-	private void initGUI() {
+	private void initGUI(final Sistema sistema) {
 		try {
 			GridLayout thisLayout = new GridLayout(5, 1);
 			thisLayout.setHgap(5);
@@ -150,6 +156,22 @@ public class NuevoRodeoView extends javax.swing.JPanel {
 						}
 					});
 					jPanel2.add(btAceptar);
+					btAceptar.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent evt) {
+							
+							try{
+								
+								SimpleDateFormat formato=new SimpleDateFormat("dd-mm-yyyy");
+								String fecha=txtFecha.getText();
+								Date f=formato.parse(fecha);
+								sistema.nuevoRodeo(Integer.parseInt(txtIdRodeo.getText()),
+										f, txtRaza.getText(), Integer.parseInt(txtCategoria.getText()));
+							}catch(Exception e){
+								System.out.println("Error al crear nuevo rodoe fecha"+e.getMessage());
+							}
+							
+						}
+					});
 				}
 			}
 		} catch (Exception e) {

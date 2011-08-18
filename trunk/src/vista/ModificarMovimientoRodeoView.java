@@ -13,6 +13,8 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.JFrame;
 
+import controlador.Sistema;
+
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -53,18 +55,19 @@ public class ModificarMovimientoRodeoView extends javax.swing.JPanel {
 	*/
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
-		frame.getContentPane().add(new ModificarMovimientoRodeoView());
+		Sistema sistema=Sistema.getInstancia();
+		frame.getContentPane().add(new ModificarMovimientoRodeoView(sistema));
 		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);
 	}
 	
-	public ModificarMovimientoRodeoView() {
+	public ModificarMovimientoRodeoView(Sistema sistema) {
 		super();
-		initGUI();
+		initGUI(sistema);
 	}
 	
-	private void initGUI() {
+	private void initGUI(Sistema sistema) {
 		try {
 			GridLayout thisLayout = new GridLayout(9, 1);
 			thisLayout.setHgap(5);
