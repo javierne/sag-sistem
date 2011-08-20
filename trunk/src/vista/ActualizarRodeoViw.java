@@ -55,7 +55,7 @@ public class ActualizarRodeoViw extends javax.swing.JPanel {
 		initGUI(sistema);
 	}
 	
-	private void initGUI(Sistema sistema) {
+	private void initGUI(final Sistema sistema) {
 		try {
 			GridLayout thisLayout = new GridLayout(5, 1);
 			thisLayout.setHgap(5);
@@ -108,6 +108,15 @@ public class ActualizarRodeoViw extends javax.swing.JPanel {
 					jPanel2.add(btAceptar);
 					btAceptar.setLayout(null);
 					btAceptar.setText("Aceptar");
+					btAceptar.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent evt) {
+							
+								int idRodeo=Integer.parseInt(txtIdRodeo.getText());
+								int idCategoria=Integer.parseInt(txtIdCategoria.getText());
+								sistema.actualizarRodeo(idRodeo, idCategoria);
+							
+						}
+					});
 					btCancelar = new JButton();
 					jPanel2.add(btCancelar);
 					btCancelar.setLayout(null);

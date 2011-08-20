@@ -167,7 +167,7 @@ public class NuevoRodeoView extends javax.swing.JPanel {
 								sistema.nuevoRodeo(Integer.parseInt(txtIdRodeo.getText()),
 										f, txtRaza.getText(), Integer.parseInt(txtCategoria.getText()));
 							}catch(Exception e){
-								System.out.println("Error al crear nuevo rodoe fecha"+e.getMessage());
+								System.out.println("Error al crear nuevo rodo fecha"+e.getMessage());
 							}
 							
 						}

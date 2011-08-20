@@ -12,6 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import negocio.Categoria;
+
 import controlador.Sistema;
 
 /**
@@ -36,7 +38,7 @@ public class ModificarCategoriaView extends javax.swing.JPanel {
 	private JTextField txtPesoMacho;
 	private JButton btModificar;
 	private JTextField txtTipo;
-	private JTextField txtPesoFinalHembra;
+	private JTextField txtPesoFHembra;
 	private JButton btCancelar;
 	private JTextField txtPesoFMacho;
 	private JTextField txtIdCategoria;
@@ -64,7 +66,7 @@ public class ModificarCategoriaView extends javax.swing.JPanel {
 		initGUI(sistema);
 	}
 	
-	private void initGUI(Sistema sistema) {
+	private void initGUI(final Sistema sistema) {
 		try {
 			GridLayout thisLayout = new GridLayout(8, 1);
 			thisLayout.setHgap(5);
@@ -92,6 +94,21 @@ public class ModificarCategoriaView extends javax.swing.JPanel {
 					btBuscar = new JButton();
 					lblIdCategoria.add(btBuscar);
 					btBuscar.setText("Buscar");
+					btBuscar.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent evt) {
+							Categoria c=sistema.buscarCategoria(Integer.parseInt(txtIdCategoria.getText()));
+							txtPesoMacho.setText(Float.toString(c.getPesoMacho()));
+							txtPesoHembra.setText(Float.toString(c.getPesoHembra()));
+							txtPesoFMacho.setText(Float.toString(c.getPesoFinalM()));
+							txtPesoFHembra.setText(Float.toString(c.getPesoFinalH()));
+							txtTipo.setText(c.getTipo());
+							txtTipo.updateUI();
+							txtPesoMacho.updateUI();
+							txtPesoHembra.updateUI();
+							txtPesoFMacho.updateUI();
+							txtPesoFHembra.updateUI();
+						}
+					});
 				}
 
 			}
@@ -111,6 +128,17 @@ public class ModificarCategoriaView extends javax.swing.JPanel {
 					btModificar = new JButton();
 					lblTipo.add(btModificar);
 					btModificar.setText("Modificar");
+					btModificar.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent evt) {
+							int idCategoria=Integer.parseInt(txtIdCategoria.getText());
+							String tipo=txtTipo.getText();
+							float pesoMacho=Float.parseFloat(txtPesoMacho.getText());
+							float pesoHembra=Float.parseFloat(txtPesoHembra.getText());
+							float pesoFMacho=Float.parseFloat(txtPesoFMacho.getText());
+							float pesoFHembra=Float.parseFloat(txtPesoFHembra.getText());
+							sistema.modificarCategoria(idCategoria, tipo, pesoMacho, pesoHembra, pesoFMacho, pesoFHembra);
+						}
+					});
 				}
 			}
 			{
@@ -173,9 +201,9 @@ public class ModificarCategoriaView extends javax.swing.JPanel {
 				lblPesoFHembra.setText("Peso Final Hembra");
 				lblPesoFHembra.setLayout(lblPesoFHembraLayout1);
 				{
-					txtPesoFinalHembra = new JTextField();
-					lblPesoFHembra.add(txtPesoFinalHembra);
-					txtPesoFinalHembra.setPreferredSize(new java.awt.Dimension(154, 23));
+					txtPesoFHembra = new JTextField();
+					lblPesoFHembra.add(txtPesoFHembra);
+					txtPesoFHembra.setPreferredSize(new java.awt.Dimension(154, 23));
 				}
 			}
 		} catch (Exception e) {

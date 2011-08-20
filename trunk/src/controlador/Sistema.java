@@ -230,14 +230,14 @@ public class Sistema {
 			Date periodoInicialAnioAnterior=new Date();//periodoInicial - 1 anio
 			int mes=periodoInicial.getMonth();
 			int dia=periodoInicial.getDate();
-			int anio=periodoInicial.getYear();
+			int anio=periodoInicial.getYear()-1;
 			periodoInicialAnioAnterior.setDate(dia);
 			periodoInicialAnioAnterior.setMonth(mes);
 			periodoInicialAnioAnterior.setYear(anio);
 			Date periodoFinalAnioAnterior= new Date();//periodoFinal -1 anio
 			int mesF=periodoFinal.getMonth();
 			int diaF=periodoFinal.getDate();
-			int anioF=periodoFinal.getYear();
+			int anioF=periodoFinal.getYear()-1;
 			periodoFinalAnioAnterior.setDate(diaF);
 			periodoFinalAnioAnterior.setMonth(mesF);
 			periodoFinalAnioAnterior.setYear(anioF);

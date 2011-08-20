@@ -80,4 +80,22 @@ public class MovimientoDeRodeo {
 	public void delete(){
 		
 	}
+	public Rodeo buscarRodeo(int idRodeo) {
+		Rodeo r=null;
+		try{
+			for(int i=0;i<rodeos.size();i++)
+			{
+				if(rodeos.elementAt(i).getIdRodeo()==idRodeo)
+				{
+					r=rodeos.elementAt(i);
+					return r;
+				}
+			}
+		}catch(Exception e){
+			System.out.println("Error al buscar Rodeo "+e.getMessage());
+			System.out.println("Stack trace " +e.getStackTrace());
+			return r;
+		}
+		return r;//aqui va Persistencia
+	}
 }

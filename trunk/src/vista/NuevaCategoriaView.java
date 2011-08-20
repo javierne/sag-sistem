@@ -67,7 +67,7 @@ public class NuevaCategoriaView extends javax.swing.JPanel {
 		initGUI(sistema);
 	}
 	
-	private void initGUI(Sistema sistema) {
+	private void initGUI(final Sistema sistema) {
 		try {
 			GridLayout thisLayout = new GridLayout(9, 1);
 			thisLayout.setColumns(1);
@@ -170,6 +170,17 @@ public class NuevaCategoriaView extends javax.swing.JPanel {
 					jPanel1.add(btAceptar);
 					btAceptar.setLayout(null);
 					btAceptar.setText("Aceptar");
+					btAceptar.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent evt) {
+							int idCategoria=Integer.parseInt(txtIdCategoria.getText());
+							String tipo=txtTipo.getText();
+							float pesoMacho=Float.parseFloat(txtPesoMacho.getText());
+							float pesoHembra=Float.parseFloat(txtPesoHembra.getText());
+							float pesoFMacho=Float.parseFloat(txtPesoFMacho.getText());
+							float pesoFHembra=Float.parseFloat(txtPesoFHembra.getText());
+							sistema.nuevaCategoria(idCategoria, tipo, pesoMacho, pesoHembra, pesoFMacho, pesoFHembra);
+						}
+					});
 					btCancelar = new JButton();
 					btCancelar.setText("Cancelar");
 					jPanel1.add(btCancelar);
