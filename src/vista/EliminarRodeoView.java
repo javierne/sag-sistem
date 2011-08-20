@@ -53,7 +53,7 @@ public class EliminarRodeoView extends javax.swing.JPanel {
 		initGUI(sistema);
 	}
 	
-	private void initGUI(Sistema sistema) {
+	private void initGUI(final Sistema sistema) {
 		try {
 			GridLayout thisLayout = new GridLayout(4, 1);
 			thisLayout.setHgap(5);
@@ -91,6 +91,12 @@ public class EliminarRodeoView extends javax.swing.JPanel {
 					btEliminar = new JButton();
 					jPanel1.add(btEliminar);
 					btEliminar.setText("Eliminar");
+					btEliminar.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent evt) {
+							int idRodeo=Integer.parseInt(txtIdRodeo.getText());
+							sistema.borrarRodeo(idRodeo);
+						}
+					});
 					btCancelar=new JButton();
 					jPanel1.add(btCancelar);
 					btCancelar.setText("Cancelar");

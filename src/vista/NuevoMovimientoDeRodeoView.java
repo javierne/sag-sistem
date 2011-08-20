@@ -5,6 +5,9 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.swing.JButton;
 
 import javax.swing.WindowConstants;
@@ -70,7 +73,7 @@ public class NuevoMovimientoDeRodeoView extends javax.swing.JPanel {
 		initGUI(sistema);
 	}
 	
-	private void initGUI(Sistema sistema) {
+	private void initGUI(final Sistema sistema) {
 		try {
 			GridLayout thisLayout = new GridLayout(12, 1);
 			thisLayout.setHgap(5);
@@ -78,7 +81,7 @@ public class NuevoMovimientoDeRodeoView extends javax.swing.JPanel {
 			thisLayout.setColumns(1);
 			thisLayout.setRows(12);
 			this.setLayout(thisLayout);
-			setPreferredSize(new Dimension(400, 300));
+			this.setPreferredSize(new java.awt.Dimension(558, 300));
 			{
 				lblNuevoMovRodeo = new JLabel();
 				this.add(lblNuevoMovRodeo);
@@ -203,7 +206,15 @@ public class NuevoMovimientoDeRodeoView extends javax.swing.JPanel {
 				{
 					btAceptar = new JButton();
 					jPanel1.add(btAceptar);
-					btAceptar.setText("Aceptar");
+					btAceptar.setText("Crear Movimiento de Rodeo");
+					btAceptar.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent evt) {
+							int idMovimiento=Integer.parseInt(txtIdMovRodeo.getText());
+							String legajo=txtLegajo.getText();
+							Date fecha=new Date();
+							sistema.nuevoMovimientoDeRodeo(idMovimiento, legajo, fecha);
+						}
+					});
 					btCancelar=new JButton();
 					jPanel1.add(btCancelar);
 					btCancelar.setText("Cancelar");
@@ -218,6 +229,27 @@ public class NuevoMovimientoDeRodeoView extends javax.swing.JPanel {
 					btAgregar=new JButton();
 					jPanel1.add(btAgregar);
 					btAgregar.setText("Agregar Rodeo");
+					btAgregar.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent evt) {
+							int idMovimiento=Integer.parseInt(txtIdMovRodeo.getText());
+							int idRodeo=Integer.parseInt(txtIdRodeo.getText());
+							int nacimientos=Integer.parseInt(txtNac.getText());
+							int muertes=Integer.parseInt(txtMuertes.getText());
+							int abortos=Integer.parseInt(txtAbortos.getText());
+							int descarte=Integer.parseInt(txtDescarte.getText());
+							int transRodeo=Integer.parseInt(txtRodeo.getText());				
+							sistema.agregarRodeo(idMovimiento, idRodeo, nacimientos, muertes, abortos, descarte, transRodeo);
+							txtIdRodeo.repaint();
+							txtNac.repaint();
+							txtMuertes.repaint();
+							txtAbortos.repaint();
+							txtDescarte.repaint();
+							txtRodeo.repaint();
+							/*
+							 *
+							 */
+						}
+					});
 				}
 			}
 		} catch (Exception e) {

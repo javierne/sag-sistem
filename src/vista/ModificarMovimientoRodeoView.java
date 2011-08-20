@@ -6,12 +6,18 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.JFrame;
+
+import negocio.Categoria;
+import negocio.MovimientoDeRodeo;
+import negocio.Rodeo;
 
 import controlador.Sistema;
 
@@ -40,7 +46,8 @@ public class ModificarMovimientoRodeoView extends javax.swing.JPanel {
 	private JLabel lblCantNac;
 	private JLabel lblIdRodeo;
 	private JLabel lblIdMovimientoRodeo;
-	private JButton btBuscar;
+	private JButton btBuscarRodeo;
+	private JButton btBuscarMov;
 	private JTextField txtRodeo;
 	private JTextField txtDescarte;
 	private JTextField txtAbortos;
@@ -49,6 +56,7 @@ public class ModificarMovimientoRodeoView extends javax.swing.JPanel {
 	private JTextField txtIdRodeo;
 	private JTextField txtIdMovRodeo;
 	private JTextField txtLegajo;
+	private JList jListaMovimientos;
 	/**
 	* Auto-generated main method to display this 
 	* JPanel inside a new JFrame.
@@ -67,15 +75,16 @@ public class ModificarMovimientoRodeoView extends javax.swing.JPanel {
 		initGUI(sistema);
 	}
 	
-	private void initGUI(Sistema sistema) {
+	private void initGUI(final Sistema sistema) {
 		try {
-			GridLayout thisLayout = new GridLayout(9, 1);
+			jListaMovimientos=new JList();
+			GridLayout thisLayout = new GridLayout(10, 1);
 			thisLayout.setHgap(5);
 			thisLayout.setVgap(5);
 			thisLayout.setColumns(1);
-			thisLayout.setRows(9);
+			thisLayout.setRows(10);
 			this.setLayout(thisLayout);
-			setPreferredSize(new Dimension(400, 300));
+			this.setPreferredSize(new java.awt.Dimension(529, 395));
 			{
 				lblActualizarMovimientoRodeo= new JLabel();
 				this.add(lblActualizarMovimientoRodeo);
@@ -90,12 +99,24 @@ public class ModificarMovimientoRodeoView extends javax.swing.JPanel {
 				{
 					txtIdMovRodeo = new JTextField();
 					lblIdMovimientoRodeo.add(txtIdMovRodeo);
-					txtIdMovRodeo.setPreferredSize(new java.awt.Dimension(74, 23));
+					txtIdMovRodeo.setPreferredSize(new java.awt.Dimension(122, 23));
 				}
 				{
-					btBuscar = new JButton();
-					lblIdMovimientoRodeo.add(btBuscar);
-					btBuscar.setText("Buscar");
+					btBuscarMov = new JButton();
+					lblIdMovimientoRodeo.add(btBuscarMov);
+					btBuscarMov.setText("Buscar  Mov.");
+					btBuscarMov.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent evt) {
+							
+							MovimientoDeRodeo mov=sistema.buscarMovimientoDeRodeo(Integer.parseInt(txtIdMovRodeo.getText()));						
+							DefaultListModel modelo=new DefaultListModel();
+							for(int i=0; i<mov.getRodeos().size();i++)
+							{
+								modelo.add(i, mov.getRodeos().elementAt(i).getIdRodeo());
+							}
+							jListaMovimientos.setModel(modelo);
+						}
+					});
 				}
 			}
 			{
@@ -109,6 +130,28 @@ public class ModificarMovimientoRodeoView extends javax.swing.JPanel {
 					lblIdRodeo.add(txtIdRodeo);
 					txtIdRodeo.setPreferredSize(new java.awt.Dimension(223, 23));
 				}
+				{
+					btBuscarRodeo = new JButton();
+					lblIdRodeo.add(btBuscarRodeo);
+					btBuscarRodeo.setText("Buscar Rod");
+					btBuscarRodeo.setPreferredSize(new java.awt.Dimension(82, 23));
+					btBuscarRodeo.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent evt) {
+							MovimientoDeRodeo mov=sistema.buscarMovimientoDeRodeo(Integer.parseInt(txtIdMovRodeo.getText()));
+							Rodeo r=mov.buscarRodeo(Integer.parseInt(txtIdRodeo.getText()));
+							txtAbortos.setText(Integer.toString(r.getAbortos()));
+							txtAbortos.updateUI();
+							txtNac.setText(Integer.toString(r.getNacimientos()));
+							txtNac.updateUI();
+							txtMuertes.setText(Integer.toString(r.getMuertes()));
+							txtMuertes.updateUI();
+							txtRodeo.setText(Integer.toString(r.getTransferenciasRodeo()));
+							txtRodeo.updateUI();
+							txtDescarte.setText(Integer.toString(r.getTransferenciasDescarte()));
+							txtDescarte.updateUI();
+						}
+					});
+				}
 			}
 			{
 				lblCantNac = new JLabel();
@@ -116,6 +159,7 @@ public class ModificarMovimientoRodeoView extends javax.swing.JPanel {
 				lblCantNac.setLayout(lblCantNacLayout);
 				this.add(lblCantNac);
 				lblCantNac.setText("Cantidad Nacimientos");
+				lblCantNac.setPreferredSize(new java.awt.Dimension(458, 28));
 				{
 					txtNac = new JTextField();
 					lblCantNac.add(txtNac);
@@ -182,6 +226,23 @@ public class ModificarMovimientoRodeoView extends javax.swing.JPanel {
 					btAceptar = new JButton();
 					jPanel1.add(btAceptar);
 					btAceptar.setText("Aceptar");
+					btAceptar.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent evt) {
+							MovimientoDeRodeo mov=sistema.buscarMovimientoDeRodeo(Integer.parseInt(txtIdMovRodeo.getText()));
+							Rodeo r=mov.buscarRodeo(Integer.parseInt(txtIdRodeo.getText()));
+							int nacimientos=Integer.parseInt(txtNac.getText());
+							int muertes=Integer.parseInt(txtMuertes.getText());
+							int abortos=Integer.parseInt(txtAbortos.getText());
+							int transferenciasDescarte=Integer.parseInt(txtDescarte.getText());
+							int transferenciasRodeo=Integer.parseInt(txtRodeo.getText());
+							r.setNacimientos(nacimientos);
+							r.setMuertes(muertes);
+							r.setAbortos(abortos);
+							r.setTransferenciasDescarte(transferenciasDescarte);
+							r.setTransferenciasRodeo(transferenciasRodeo);
+							
+						}
+					});
 					btCancelar=new JButton();
 					jPanel1.add(btCancelar);
 					btCancelar.setText("Cancelar");
@@ -195,6 +256,11 @@ public class ModificarMovimientoRodeoView extends javax.swing.JPanel {
 					});
 				}
 			}
+			{
+				this.add(jListaMovimientos);
+				
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
