@@ -11,7 +11,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.WindowConstants;
 import javax.swing.JFrame;
 
@@ -57,6 +59,7 @@ public class ModificarMovimientoRodeoView extends javax.swing.JPanel {
         private JTextField txtIdMovRodeo;
         private JTextField txtLegajo;
         private JList jListaMovimientos;
+        private JScrollPane jScrool;
         /**
         * Auto-generated main method to display this 
         * JPanel inside a new JFrame.
@@ -266,7 +269,8 @@ public class ModificarMovimientoRodeoView extends javax.swing.JPanel {
                                 }
                         }
                         {
-                                this.add(jListaMovimientos);
+                        	jScrool=new JScrollPane(jListaMovimientos,ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+                            this.add(jScrool);
                                 
                         }
                         
