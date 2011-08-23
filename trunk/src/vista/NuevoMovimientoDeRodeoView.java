@@ -237,7 +237,8 @@ public class NuevoMovimientoDeRodeoView extends javax.swing.JPanel {
 							int muertes=Integer.parseInt(txtMuertes.getText());
 							int abortos=Integer.parseInt(txtAbortos.getText());
 							int descarte=Integer.parseInt(txtDescarte.getText());
-							int transRodeo=Integer.parseInt(txtRodeo.getText());				
+							int transRodeo=Integer.parseInt(txtRodeo.getText());	
+							
 							sistema.agregarRodeo(idMovimiento, idRodeo, nacimientos, muertes, abortos, descarte, transRodeo);
 							txtIdRodeo.repaint();
 							txtNac.repaint();
@@ -245,9 +246,7 @@ public class NuevoMovimientoDeRodeoView extends javax.swing.JPanel {
 							txtAbortos.repaint();
 							txtDescarte.repaint();
 							txtRodeo.repaint();
-							/*
-							 *
-							 */
+							
 						}
 					});
 				}

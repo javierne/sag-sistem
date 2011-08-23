@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import negocio.Rodeo;
+
 import controlador.Sistema;
 
 /**
@@ -94,7 +96,11 @@ public class EliminarRodeoView extends javax.swing.JPanel {
 					btEliminar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent evt) {
 							int idRodeo=Integer.parseInt(txtIdRodeo.getText());
-							sistema.borrarRodeo(idRodeo);
+							Rodeo r=sistema.buscarRodeo(idRodeo);
+							if(r!=null)
+								sistema.borrarRodeo(idRodeo);
+							else
+								System.out.println("El rodeo no existe");
 						}
 					});
 					btCancelar=new JButton();
