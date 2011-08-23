@@ -213,7 +213,7 @@ public class Sistema {
 					System.out.println("Error al agregar Rodeo, el rodeo no existe ");
 				else{
 					if(r2!=null)
-						System.out.println("Error al agregar Rodeo, el rodeo y ");
+						System.out.println("Error al agregar Rodeo, el rodeo ya se encuentra agregado ");
 				}
 			}
 			
