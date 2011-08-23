@@ -110,7 +110,7 @@ public class Menu extends javax.swing.JFrame {
 									getContentPane().remove(jPanel1);
 									getContentPane().repaint();
 									jPanel1=null;
-									jPanel1= new ActualizarRodeoViw(sistema);
+									jPanel1= new ActualizarRodeoView(sistema);
 									getContentPane().add(jPanel1);
 									jPanel1.repaint();
 									jPanel1.updateUI();

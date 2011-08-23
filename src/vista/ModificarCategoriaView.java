@@ -97,16 +97,21 @@ public class ModificarCategoriaView extends javax.swing.JPanel {
 					btBuscar.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent evt) {
 							Categoria c=sistema.buscarCategoria(Integer.parseInt(txtIdCategoria.getText()));
-							txtPesoMacho.setText(Float.toString(c.getPesoMacho()));
-							txtPesoHembra.setText(Float.toString(c.getPesoHembra()));
-							txtPesoFMacho.setText(Float.toString(c.getPesoFinalM()));
-							txtPesoFHembra.setText(Float.toString(c.getPesoFinalH()));
-							txtTipo.setText(c.getTipo());
+							if(c!=null){
+								txtPesoMacho.setText(Float.toString(c.getPesoMacho()));
+								txtPesoHembra.setText(Float.toString(c.getPesoHembra()));
+								txtPesoFMacho.setText(Float.toString(c.getPesoFinalM()));
+								txtPesoFHembra.setText(Float.toString(c.getPesoFinalH()));
+								txtTipo.setText(c.getTipo());
+							}else{
+								System.out.println("Error al buscar Categoria, categoria no existe ");
+							}
 							txtTipo.updateUI();
 							txtPesoMacho.updateUI();
 							txtPesoHembra.updateUI();
 							txtPesoFMacho.updateUI();
 							txtPesoFHembra.updateUI();
+							
 						}
 					});
 				}

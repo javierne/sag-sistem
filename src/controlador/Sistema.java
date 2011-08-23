@@ -43,7 +43,11 @@ public class Sistema {
 					r=new Rodeo(idRodeo,fecha,raza,c); 
 					r.insert();
 					rodeos.add(r);
+				}else{
+					System.out.println("Error al crear Rodeo, categoria no existe ");
 				}
+			}else{
+				System.out.println("Error al crear Rodeo, id de rodeo ya utilizado");
 			}
 		}catch(Exception e){
 			System.out.println("Error al crear Rodeo "+e.getMessage());
@@ -58,6 +62,13 @@ public class Sistema {
 			{
 				r.setCategoria(c);
 				r.update();
+			}else{
+				if(r==null)
+				{
+					System.out.println("Error al Actualizar Rodeo, rodeo no existe");
+				}else{
+					System.out.println("Error al Actualizar Rodeo, categoria no existe ");
+				}
 			}
 		}catch(Exception e){
 			System.out.println("Error al Actualizar Rodeo "+e.getMessage());
@@ -141,6 +152,8 @@ public class Sistema {
 				c=new Categoria(idCategoria, tipo, pesoMacho, pesoHembra, pesoFHembra, pesoFMacho);
 				c.insert();
 				categorias.add(c);
+			}else{
+				System.out.println("Error al crear Categoria, use otro ID");
 			}
 		}catch(Exception e){
 			System.out.println("Error al crear Categoria "+e.getMessage());
@@ -158,6 +171,8 @@ public class Sistema {
 				c.setPesoFinalM(pesoFMacho);
 				c.setPesoFinalH(pesoFHembra);
 				c.update();
+			}else{
+				System.out.println("Error al actualizar Categoria, categoria no existe ");
 			}
 		}catch(Exception e){
 			System.out.println("Error al modificar Categoria "+e.getMessage());
@@ -172,6 +187,8 @@ public class Sistema {
 				m=new MovimientoDeRodeo(idMovimiento, legajo, fecha);
 				movimientosDeRodeo.add(m);
 				m.insert();
+			}else{
+				System.out.println("Error al crear Mov.Rodeo, id de movimiento ya existe ");
 			}
 		}catch(Exception e){
 			System.out.println("Error al crear Movimiento"+e.getMessage());
@@ -182,13 +199,24 @@ public class Sistema {
 		try {
 			MovimientoDeRodeo m=this.buscarMovimientoDeRodeo(idMovimiento);
 			Rodeo r=this.buscarRodeo(idRodeo);
-			r.setNacimientos(nacimientos);
-			r.setMuertes(muertes);
-			r.setAbortos(abortos);
-			r.setTransferenciasDescarte(descarte);
-			r.setTransferenciasRodeo(transRodeo);
-			m.getRodeos().add(r);
-			m.update();
+			Rodeo r2=m.buscarRodeo(idRodeo);
+			if(r!=null && r2==null){ //no agrega mas de un movimiento por rodeo
+				r.setNacimientos(nacimientos);
+				r.setMuertes(muertes);
+				r.setAbortos(abortos);
+				r.setTransferenciasDescarte(descarte);
+				r.setTransferenciasRodeo(transRodeo);
+				m.getRodeos().add(r);
+				m.update();
+			}else{
+				if(r==null)
+					System.out.println("Error al agregar Rodeo, el rodeo no existe ");
+				else{
+					if(r2!=null)
+						System.out.println("Error al agregar Rodeo, el rodeo y ");
+				}
+			}
+			
 		}catch(Exception e){
 			System.out.println("Error al agregar Rodeo a Movimiento"+e.getMessage());
 			System.out.println("Stack trace " +e.getStackTrace());
@@ -198,15 +226,19 @@ public class Sistema {
 		try{
 			MovimientoDeRodeo m=this.buscarMovimientoDeRodeo(idMovimiento);
 			Rodeo r=this.buscarRodeo(idRodeo);
-			r.setNacimientos(nacimientos);
-			r.setMuertes(muertes);
-			r.setAbortos(abortos);
-			r.setTransferenciasDescarte(descarte);
-			r.setTransferenciasRodeo(transRodeo);
-			m.getRodeos().add(r);
-			m.update();
+			if(r!=null){
+				r.setNacimientos(nacimientos);
+				r.setMuertes(muertes);
+				r.setAbortos(abortos);
+				r.setTransferenciasDescarte(descarte);
+				r.setTransferenciasRodeo(transRodeo);
+				m.getRodeos().add(r);
+				m.update();
+			}else{
+				System.out.println("Error al modificar movimiento Rodeo, rodeo no existe ");
+			}
 		}catch(Exception e){
-			System.out.println("Error al agregar Rodeo a Movimiento"+e.getMessage());
+			System.out.println("Error al modificar Rodeo a Movimiento"+e.getMessage());
 			System.out.println("Stack trace " +e.getStackTrace());
 		}
 	}
