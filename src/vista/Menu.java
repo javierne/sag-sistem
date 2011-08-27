@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
+import controlador.Datos;
 import controlador.Sistema;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -57,6 +58,7 @@ public class Menu extends javax.swing.JFrame {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				Sistema sistema=Sistema.getInstancia();
+				Datos datos=Datos.getInstancia();
 				Menu inst = new Menu(sistema);
 				inst.setLocationRelativeTo(null);
 				inst.setVisible(true);
