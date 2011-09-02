@@ -17,7 +17,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import controlador.Sistema;
+import sistemaAdministracionGanadera.SistemaAdministracionGanadera;
+
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -55,19 +56,19 @@ public class NuevaCategoriaView extends javax.swing.JPanel {
 	*/
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
-		Sistema sistema=Sistema.getInstancia();
+		SistemaAdministracionGanadera sistema=SistemaAdministracionGanadera.getInstancia();
 		frame.getContentPane().add(new NuevaCategoriaView(sistema));
 		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);
 	}
 	
-	public NuevaCategoriaView(Sistema sistema) {
+	public NuevaCategoriaView(SistemaAdministracionGanadera sistema) {
 		super();
 		initGUI(sistema);
 	}
 	
-	private void initGUI(final Sistema sistema) {
+	private void initGUI(SistemaAdministracionGanadera sistema) {
 		try {
 			GridLayout thisLayout = new GridLayout(9, 1);
 			thisLayout.setColumns(1);

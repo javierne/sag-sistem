@@ -35,7 +35,7 @@ public class Menu extends javax.swing.JFrame {
 	private JPanel jPanel1;
 	private JMenuItem prediccionMuerte;
 	private JMenuItem prediccionDePeso;
-	private JMenuItem prediccionPreñez;
+	private JMenuItem prediccionPreï¿½ez;
 	private JMenuItem prediccionNacimiento;
 	private JMenuItem prediccionVolumenVenta;
 	private JMenuItem menuSalir;
@@ -265,15 +265,15 @@ public class Menu extends javax.swing.JFrame {
 					});
 					}
 					{
-						prediccionPreñez = new JMenuItem();
-						menuPredicciones.add(prediccionPreñez);
-						prediccionPreñez.setText("Prediccion de Preñez");
-						prediccionPreñez.addActionListener(new ActionListener() {
+						prediccionPreï¿½ez = new JMenuItem();
+						menuPredicciones.add(prediccionPreï¿½ez);
+						prediccionPreï¿½ez.setText("Prediccion de Preï¿½ez");
+						prediccionPreï¿½ez.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent evt) {
 								getContentPane().remove(jPanel1);
 								getContentPane().repaint();
 								jPanel1=null;
-								jPanel1= new PrediccionPreñezView(sistema);
+								jPanel1= new PrediccionPreï¿½ezView(sistema);
 								getContentPane().add(jPanel1);
 								jPanel1.repaint();
 								jPanel1.updateUI();
@@ -337,7 +337,7 @@ public class Menu extends javax.swing.JFrame {
 				{
 					menuPreniezNacimiento = new JMenuItem();
 					jMenuBar1.add(menuPreniezNacimiento);
-					menuPreniezNacimiento.setText("Relacion Preñez-Nacimiento");
+					menuPreniezNacimiento.setText("Relacion Preï¿½ez-Nacimiento");
 					menuPreniezNacimiento.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent evt) {
 							getContentPane().remove(jPanel1);

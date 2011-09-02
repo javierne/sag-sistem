@@ -13,7 +13,8 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.JFrame;
 
-import controlador.Sistema;
+import sistemaAdministracionGanadera.SistemaAdministracionGanadera;
+
 
 
 /**
@@ -42,19 +43,19 @@ public class RelacionPreniezNacimientoView extends javax.swing.JPanel {
 	*/
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
-		Sistema sistema=Sistema.getInstancia();
+		SistemaAdministracionGanadera sistema=SistemaAdministracionGanadera.getInstancia();
 		frame.getContentPane().add(new RelacionPreniezNacimientoView(sistema));
 		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);
 	}
 	
-	public RelacionPreniezNacimientoView(Sistema sistema) {
+	public RelacionPreniezNacimientoView(SistemaAdministracionGanadera sistema) {
 		super();
 		initGUI(sistema);
 	}
 	
-	private void initGUI(Sistema sistema) {
+	private void initGUI(SistemaAdministracionGanadera sistema) {
 		try {
 			GridLayout thisLayout = new GridLayout(5, 1);
 			thisLayout.setHgap(5);
@@ -66,14 +67,14 @@ public class RelacionPreniezNacimientoView extends javax.swing.JPanel {
 			{
 				lblRelPrenieNac = new JLabel();
 				this.add(lblRelPrenieNac);
-				lblRelPrenieNac.setText("Relacion Preñe Nacimientos");
+				lblRelPrenieNac.setText("Relacion Preï¿½e Nacimientos");
 			}
 			{
 				lblAnio = new JLabel();
 				FlowLayout lblAnioLayout = new FlowLayout();
 				lblAnio.setLayout(lblAnioLayout);
 				this.add(lblAnio);
-				lblAnio.setText("Año");
+				lblAnio.setText("Aï¿½o");
 				{
 					txtAnio = new JTextField();
 					lblAnio.add(txtAnio);
@@ -101,7 +102,7 @@ public class RelacionPreniezNacimientoView extends javax.swing.JPanel {
 			{
 				lblRelPN = new JLabel();
 				this.add(lblRelPN);
-				lblRelPN.setText("Relacion Preñe-Nacimiento");
+				lblRelPN.setText("Relacion Preï¿½e-Nacimiento");
 			}
 			{
 				txtArea = new JTextArea();

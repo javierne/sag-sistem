@@ -21,7 +21,7 @@ import negocio.Categoria;
 import negocio.MovimientoDeRodeo;
 import negocio.Rodeo;
 
-import controlador.Sistema;
+import sistemaAdministracionGanadera.*;;
 
 
 /**
@@ -66,19 +66,19 @@ public class ModificarMovimientoRodeoView extends javax.swing.JPanel {
         */
         public static void main(String[] args) {
                 JFrame frame = new JFrame();
-                Sistema sistema=Sistema.getInstancia();
+                SistemaAdministracionGanadera sistema=SistemaAdministracionGanadera.getInstancia();
                 frame.getContentPane().add(new ModificarMovimientoRodeoView(sistema));
                 frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
         }
         
-        public ModificarMovimientoRodeoView(Sistema sistema) {
+        public ModificarMovimientoRodeoView(SistemaAdministracionGanadera sistema) {
                 super();
                 initGUI(sistema);
         }
         
-        private void initGUI(final Sistema sistema) {
+        private void initGUI(final SistemaAdministracionGanadera sistema) {
                 try {
                         jListaMovimientos=new JList();
                         GridLayout thisLayout = new GridLayout(10, 1);
