@@ -4,15 +4,17 @@ package controlador;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import sistemaAdministracionGanadera.SistemaAdministracionGanadera;
+
 public class Datos {
 	/*
-	 * Clase de Inserción de datos.
+	 * Clase de Inserciï¿½n de datos.
 	 */
-	private static Sistema sistema;
+	private static SistemaAdministracionGanadera sistema;
 	private static Datos datos;
 	
 	private Datos(){
-		sistema=Sistema.getInstancia();
+		sistema=SistemaAdministracionGanadera.getInstancia();
 		insertarCategoria(sistema);
 		insertarRodeos(sistema);
 		insertarMovimientosRodeo(sistema);
@@ -23,12 +25,12 @@ public class Datos {
 			datos=new Datos();
 		return datos;
 	}
-	public void insertarCategoria(Sistema sistema){
+	public void insertarCategoria(SistemaAdministracionGanadera sistema){
 		sistema.nuevaCategoria(1, "vaca", 60, 55, 120, 100);
 		sistema.nuevaCategoria(2, "vaquillona", 40, 35, 60, 55);
 		sistema.nuevaCategoria(3, "novillo", 5, 6, 40, 35);
 	}
-	public void insertarRodeos(Sistema sistema){
+	public void insertarRodeos(SistemaAdministracionGanadera sistema){
 		try{
 			SimpleDateFormat forma=new SimpleDateFormat("dd-mm-yyyy");
 			String fecha="20-01-1999";
@@ -52,7 +54,7 @@ public class Datos {
 			System.out.println("error insertar rodeo");
 		}
 	}
-	public void insertarMovimientosRodeo(Sistema sistema){
+	public void insertarMovimientosRodeo(SistemaAdministracionGanadera sistema){
 		try{
 			SimpleDateFormat forma=new SimpleDateFormat("dd-mm-yyyy");
 			String fecha="20-01-1999";
