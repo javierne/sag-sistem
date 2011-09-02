@@ -13,7 +13,8 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.JFrame;
 
-import controlador.Sistema;
+import sistemaAdministracionGanadera.SistemaAdministracionGanadera;
+
 
 
 /**
@@ -46,19 +47,19 @@ public class PrediccionMuerteView extends javax.swing.JPanel {
 	*/
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
-		Sistema sistema=Sistema.getInstancia();
+		SistemaAdministracionGanadera sistema=SistemaAdministracionGanadera.getInstancia();
 		frame.getContentPane().add(new PrediccionMuerteView(sistema));
 		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);
 	}
 	
-	public PrediccionMuerteView(Sistema sistema) {
+	public PrediccionMuerteView(SistemaAdministracionGanadera sistema) {
 		super();
 		initGUI(sistema);
 	}
 	
-	private void initGUI(Sistema sistema) {
+	private void initGUI(SistemaAdministracionGanadera sistema) {
 		try {
 			GridLayout thisLayout = new GridLayout(8, 1);
 			thisLayout.setHgap(5);
