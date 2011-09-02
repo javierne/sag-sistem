@@ -1,4 +1,4 @@
-package persistencia;
+package daos;
 
 import java.io.FileInputStream;
 import java.net.PasswordAuthentication;

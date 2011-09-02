@@ -2,7 +2,7 @@ package negocio;
 
 import java.util.Date;
 
-public class PrediccionPreñez {
+public class PrediccionPreniez {
 	private Date periodoInicial;
 	private Date periodoFinal;
 	private String idCategoria;
